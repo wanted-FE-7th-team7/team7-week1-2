@@ -11,6 +11,7 @@ export const IssuesService = {
       throw new Error('API통신 실패');
     } catch (error: any) {
       console.error(error.message);
+      throw new Error();
     }
   },
 };

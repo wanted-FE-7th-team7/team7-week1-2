@@ -23,7 +23,7 @@ const S = {
     justify-content: center;
   `,
   Layout: styled.div`
-    width: 30rem;
+    width: 40rem;
     height: 100vh;
     display: flex;
     flex-direction: column;

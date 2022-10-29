@@ -15,13 +15,33 @@ export default function IssueCard({
   createdAt,
   commentCount,
 }: Props) {
-  return <S.IssueWrapper />;
+  return (
+    <S.Wrapper>
+      <S.IssueInfos>
+        <S.IssueTitle>
+          #{id} {title}
+        </S.IssueTitle>
+        <S.IssueInfo>
+          작성자 : {author} 작성일 : {createdAt}
+        </S.IssueInfo>
+      </S.IssueInfos>
+      <div>코멘트: {commentCount}</div>
+    </S.Wrapper>
+  );
 }
 
 const S = {
-  IssueWrapper: styled.div`
+  Wrapper: styled.div`
     width: 100%;
     height: 5rem;
+    display: flex;
     background-color: yellow;
+    justify-content: space-between;
   `,
+  IssueInfos: styled.div`
+    display: flex;
+    flex-direction: column;
+  `,
+  IssueTitle: styled.div``,
+  IssueInfo: styled.div``,
 };

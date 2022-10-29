@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './Layouts/Layout';
-import Detail from './pages/Detail';
-import Issues from './pages/Issues';
+import DetailPage from './pages/DetailPage';
+import IssuesPage from './pages/IssuesPage';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
           path="/"
           element={
             <Layout>
-              <Issues />
+              <IssuesPage />
             </Layout>
           }
         />
@@ -20,7 +20,7 @@ function App() {
           path="/todo"
           element={
             <Layout>
-              <Detail />
+              <DetailPage />
             </Layout>
           }
         />

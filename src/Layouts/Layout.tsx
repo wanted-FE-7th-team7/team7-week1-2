@@ -17,8 +17,9 @@ function Layout({ children }: PropsWithChildren) {
 export default Layout;
 
 const Wrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 80%;
+  margin-top: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,9 +27,7 @@ const Wrapper = styled.div`
 
 const StyledLayout = styled.div`
   width: 40rem;
-  height: 80vh;
   display: flex;
   flex-direction: column;
-  background-color: #eeeeee;
   align-items: center;
 `;

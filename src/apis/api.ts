@@ -5,7 +5,9 @@ const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 
 export const URLS = {
   USER: '/user',
-  ISSUES_ANGULAR_CLI: '/repos/angular/angular-cli/issues',
+  ISSUES: {
+    ANGULAR_CLI: '/repos/angular/angular-cli/issues',
+  },
 };
 
 export const http = axios.create({

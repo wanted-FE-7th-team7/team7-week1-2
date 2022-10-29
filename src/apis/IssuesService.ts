@@ -1,10 +1,10 @@
 import { http, URLS } from './api';
 
 export const IssuesService = {
-  getIssues: async function () {
+  getIssues: async function (page = 1) {
     try {
-      const querys = '?sort=comments';
-      const url = `${URLS.ISSUES_ANGULAR_CLI}`;
+      const query = `?sort=comments&per_page=10&page=${page}`;
+      const url = `${URLS.ISSUES.ANGULAR_CLI}${query}`;
       const res = await http.get(url);
       if (res.status === 200) return res.data;
 

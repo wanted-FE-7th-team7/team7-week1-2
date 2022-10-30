@@ -1,14 +1,14 @@
 // @flow
 import * as React from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { useIssues } from '../hooks/useIssues';
 import { IssueItem } from './IssueItem';
 import ReactMarkDown from 'react-markdown';
 import styled from 'styled-components';
 import { useEffect } from 'react';
+import { useIssuesValue } from '../hooks/useIssues';
 
 export function IssueDetail() {
-  const issues = useIssues();
+  const issues = useIssuesValue();
   const params = useParams();
   const navigate = useNavigate();
 

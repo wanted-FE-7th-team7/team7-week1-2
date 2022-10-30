@@ -1,12 +1,13 @@
 // @flow
-import * as React from 'react';
 import styled from 'styled-components';
-import { useIssues } from '../hooks/useIssues';
+import { useIssuesValue } from '../hooks/useIssues';
 import { Issue } from '../models/issue';
 import { IssueItem } from './IssueItem';
 
 export function IssueList() {
-  const issues = useIssues();
+  const issues = useIssuesValue();
+
+  if (issues === null) return null;
 
   return (
     <S.IssueList>

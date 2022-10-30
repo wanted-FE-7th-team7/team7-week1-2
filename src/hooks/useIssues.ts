@@ -1,10 +1,35 @@
 import { useContext } from 'react';
-import { issuesContext } from '../contexts/issuesContext';
+import {
+  IssuesStateContext,
+  IssuesDispatchContext,
+} from '../contexts/IssuesContext';
 
-const useIssues = () => {
-  const issues = useContext(issuesContext);
+export function useIssuesState() {
+  const state = useContext(IssuesStateContext);
 
-  return issues;
-};
+  if (!state) {
+    throw new Error('Provider를 찾을 수 없습니다.');
+  }
 
-export { useIssues };
+  return state;
+}
+
+export function useIssuesValue() {
+  const state = useContext(IssuesStateContext);
+
+  if (!state) {
+    throw new Error('Provider를 찾을 수 없습니다.');
+  }
+
+  return state.data;
+}
+
+export function useIssuesDispatch() {
+  const dispatch = useContext(IssuesDispatchContext);
+
+  if (!dispatch) {
+    throw new Error('Provider를 찾을 수 없습니다.');
+  }
+
+  return dispatch;
+}

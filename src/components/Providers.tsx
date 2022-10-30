@@ -2,9 +2,9 @@ import * as React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { IssuesProvider } from '../contexts/IssuesContext';
 
-type Props = {
+interface Props {
   children: React.ReactElement;
-};
+}
 
 export function Providers({ children }: Props) {
   return (

@@ -1,8 +1,7 @@
-// @flow
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-type Props = {};
-export function ErrorPage(props: Props) {
+
+export function ErrorPage() {
   return (
     <div>
       <h1>에러가 발생했습니다.</h1>

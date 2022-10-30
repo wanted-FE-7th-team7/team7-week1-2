@@ -1,7 +1,7 @@
-// @flow
-import { AxiosError } from 'axios';
 import * as React from 'react';
+import { AxiosError } from 'axios';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 import { issuesApi } from '../apis/issuesApi';
 import { useIssuesDispatch, useIssuesState } from '../hooks/useIssues';
@@ -15,6 +15,7 @@ export function IssueLoader() {
   const [isEnd, setIsEnd] = useState(false);
   const { isLoading } = useIssuesState();
   const dispatch = useIssuesDispatch();
+  const navigate = useNavigate();
 
   const onIntersect: IntersectionObserverCallback = useCallback(
     async ([entry], observer) => {
@@ -38,10 +39,11 @@ export function IssueLoader() {
         } catch (e) {
           const axiosError = e as AxiosError;
           dispatch({ type: 'GET_ISSUES_ERROR', error: axiosError });
+          navigate('/error');
         }
       }
     },
-    [dispatch]
+    [dispatch, navigate]
   );
 
   useEffect(() => {

@@ -9,11 +9,14 @@ interface Props {
   index?: number;
 }
 
+const BANNER_IMG_URL =
+  'https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fuserweb%2Flogo_wanted_black.png&w=110&q=100';
+
 export function _IssueItem({ issue, index }: Props) {
   return (
     <>
       <S.IssueItem>
-        <Link to={`/${issue.id}`}>
+        <Link to={`/${issue.id}`} state={{ state: issue }}>
           <div className="left">
             <div className="leftTop">
               <div>#{issue.number}</div>
@@ -36,10 +39,7 @@ export function _IssueItem({ issue, index }: Props) {
           target="_blank"
           rel="noreferrer"
         >
-          <img
-            src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fuserweb%2Flogo_wanted_black.png&w=110&q=100"
-            alt="wanted_logo"
-          />
+          <img src={BANNER_IMG_URL} alt="wanted_logo" />
         </S.Banner>
       )}
     </>

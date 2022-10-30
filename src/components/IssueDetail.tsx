@@ -1,30 +1,18 @@
 // @flow
-import * as React from 'react';
-import { useNavigate, useParams } from 'react-router';
 import { IssueItem } from './IssueItem';
 import ReactMarkDown from 'react-markdown';
 import styled from 'styled-components';
-import { useEffect } from 'react';
-import { useIssuesValue } from '../hooks/useIssues';
+import { useLocation } from 'react-router';
 
 export function IssueDetail() {
-  const issues = useIssuesValue();
-  const params = useParams();
-  const navigate = useNavigate();
+  const location = useLocation();
 
-  useEffect(() => {
-    if (issues.length === 0) {
-      navigate('/error');
-    }
-  }, [issues.length, navigate]);
+  const { state: issue } = location.state;
 
-  const [issue] = issues.filter(issue => issue.id === Number(params?.id));
-
-  if (issues.length === 0) return null;
   return (
     <section>
       <S.IssueDetailHeader>
-        <img src={issue.user.profile_url} alt={issue.user.name} />
+        <img src={issue?.user?.profile_url} alt={issue?.user?.name} />
         <IssueItem issue={issue} />
       </S.IssueDetailHeader>
       <ReactMarkDown>{issue.body}</ReactMarkDown>

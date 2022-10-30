@@ -16,11 +16,13 @@ export interface IssueResponse {
 }
 export type IssuesSort = 'created' | 'updated' | 'comments';
 
-const GITHUB_API_URL = 'https://api.github.com';
-const GITHUB_ACCEPT = 'application/vnd.github+json';
+export const GITHUB_API_URL = 'https://api.github.com';
+export const GITHUB_ACCEPT = 'application/vnd.github+json';
+export const GITHUB_OWNER_NAME = 'angular';
+export const GITHUB_REPO_NAME = 'angular-cli';
 
 const path = {
-  issues: '/repos/angular/angular-cli/issues',
+  issues: `/repos/${GITHUB_OWNER_NAME}/${GITHUB_REPO_NAME}/issues`,
 };
 
 class IssuesApi {

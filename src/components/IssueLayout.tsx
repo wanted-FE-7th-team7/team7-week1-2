@@ -1,16 +1,16 @@
 // @flow
 import * as React from 'react';
+import { IssueHeader } from './IssueHeader';
 
 import { IssueRouter } from './IssueRouter';
 
 export function IssueLayout() {
   return (
     <>
-      <header>헤더 테스트</header>
+      <IssueHeader />
       <main>
         <IssueRouter />
       </main>
-      <footer>푸터 테스트</footer>
     </>
   );
 }

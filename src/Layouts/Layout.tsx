@@ -30,4 +30,13 @@ const StyledLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (max-width: 760px) {
+    width: 35rem;
+  }
+  @media screen and (max-width: 640px) {
+    width: 30rem;
+  }
+  @media screen and (max-width: 500px) {
+    width: 95%;
+  }
 `;

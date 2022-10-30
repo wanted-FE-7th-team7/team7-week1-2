@@ -5,3 +5,9 @@ declare namespace NodeJS {
     REACT_APP_GITHUB_TOKEN: string;
   }
 }
+
+declare namespace JSX {
+  interface IntrinsicElements {
+    [elemName: string]: any;
+  }
+}

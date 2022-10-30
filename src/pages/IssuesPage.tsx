@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction, useContext } from 'react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
-import { IssueContextInterface } from '../contexts/IssueContext';
-import { IssueContext } from '../App';
+import { IssueContext } from '../contexts/IssueContext';
 import IssueItem from '../components/IssueItem';
 import AdBanner from '../components/AdBanner';
 import Error from '../components/Error';
@@ -12,8 +11,7 @@ function IssuesPage({
 }: {
   setPage: Dispatch<SetStateAction<number>>;
 }) {
-  const { issueList, isLoading, errors }: IssueContextInterface =
-    useContext(IssueContext)!;
+  const { issueList, isLoading, errors } = useContext(IssueContext)!;
   const setObserveTarget = useIntersectionObserver(setPage);
 
   if (errors) {

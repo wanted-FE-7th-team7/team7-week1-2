@@ -1,44 +1,17 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useContext } from 'react';
 import styled from 'styled-components';
-import { IssuesService } from '../apis/IssuesService';
+import { IssueContext, IssueContextInterface } from '../App';
+import IssueItem from '../components/IssueItem';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import { AD } from '../utils/variable';
 
-interface Issue {
-  number: number;
-  title: string;
-  user: IssueUser;
-  created_at: string;
-  comments: number;
-  body: string;
-}
-
-interface IssueUser {
-  login: string;
-  avatar_url: string;
-}
-
-function IssuesPage() {
-  const [issueList, setIssueList] = useState<Issue[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [errors, setErrors] = useState(false);
-  const [page, setPage] = useState(1);
-
-  const handleFetch = useCallback(async (page: number) => {
-    setIsLoading(true);
-    try {
-      const data = await IssuesService.getIssues(page);
-      setIssueList(prev => [...prev, ...data]);
-    } catch (error) {
-      setErrors(true);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    handleFetch(page);
-  }, [page, handleFetch]);
-
+function IssuesPage({
+  setPage,
+}: {
+  setPage: Dispatch<SetStateAction<number>>;
+}) {
+  const { issueList, isLoading, errors }: IssueContextInterface =
+    useContext(IssueContext)!;
   const setObserveTarget = useIntersectionObserver(setPage);
 
   if (errors) {
@@ -49,20 +22,13 @@ function IssuesPage() {
     <>
       <ul>
         {issueList &&
-          issueList.map(
-            ({ number, title, user, created_at, comments }, idx) => (
-              <StyledItem key={number}>
-                <p>
-                  #{number} title: {title}
-                </p>
-                <p>
-                  <span>작성자: {user.login}</span>
-                  <span>작성일: {created_at}</span>
-                  <span>코멘츠: {comments}</span>
-                </p>
-              </StyledItem>
-            )
-          )}
+          issueList.map((issue, idx) => {
+            return (
+              <li key={issue.number} style={{ listStyle: 'none' }}>
+                <IssueItem issue={issue} />
+              </li>
+            );
+          })}
       </ul>
       {isLoading && <p>loading...</p>}
 
@@ -73,10 +39,17 @@ function IssuesPage() {
 
 export default IssuesPage;
 
-const StyledItem = styled.div`
-  padding: 0.25rem 2rem;
+const StyledAdBanner = styled.img`
+  width: 100%;
+  max-height: 5rem;
+  object-fit: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem 1rem;
   margin-bottom: 0.5rem;
   background-color: rgba(250, 250, 250, 0.5);
   box-shadow: 1px 1px 1px 1px rgba(34, 36, 38, 0.05);
   border-radius: 10px;
+  cursor: pointer;
 `;

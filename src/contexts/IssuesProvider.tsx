@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router';
 
 import { Issue } from '../models/issue';
 import { issuesLoader } from '../utils/issuesLoader';
@@ -11,12 +12,18 @@ interface Props {
 
 function IssuesProvider({ children }: Props) {
   const [issues, setIssues] = useState<Issue[]>([]);
+  const navigate = useNavigate();
 
   const loadIssues = useCallback(async () => {
-    const { isEnd, newIssues } = await issuesLoader.getNextIssuesAsync();
-    setIssues(prevIssues => [...prevIssues, ...newIssues]);
-    return isEnd;
-  }, []);
+    try {
+      const { isEnd, newIssues } = await issuesLoader.getNextIssuesAsync();
+      setIssues(prevIssues => [...prevIssues, ...newIssues]);
+      return isEnd;
+    } catch {
+      navigate('/error');
+      return false;
+    }
+  }, [navigate]);
 
   return (
     <IssuesContext.Provider value={issues}>

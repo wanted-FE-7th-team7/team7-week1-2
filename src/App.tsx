@@ -1,3 +1,4 @@
+import React from 'react';
 import { MainRouter } from './components/MainRouter';
 import { Providers } from './components/Providers';
 

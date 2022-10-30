@@ -14,7 +14,7 @@ export function IssueDetail() {
 
   useEffect(() => {
     if (issues.length === 0) {
-      navigate('/');
+      navigate('/error');
     }
   }, [issues.length, navigate]);
 

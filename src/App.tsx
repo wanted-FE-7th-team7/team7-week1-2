@@ -1,7 +1,13 @@
 import React from 'react';
+import { MainRouter } from './components/MainRouter';
+import { Providers } from './components/Providers';
 
 function App() {
-  return <div className="App">여기에 앱을 작성해주세요.</div>;
+  return (
+    <Providers>
+      <MainRouter />
+    </Providers>
+  );
 }
 
 export default App;

@@ -6,36 +6,72 @@ import { Issue } from '../models/issue';
 
 interface Props {
   issue: Issue;
+  index?: number;
 }
 
-export function _IssueItem({ issue }: Props) {
+export function _IssueItem({ issue, index }: Props) {
   return (
-    <S.IssueItem>
-      <Link to={`/${issue.id}`}>
-        <div className="left">
-          <div className="leftTop">
-            <div>#{issue.number}</div>
-            <div>{issue.title}</div>
+    <>
+      <S.IssueItem>
+        <Link to={`/${issue.id}`}>
+          <div className="left">
+            <div className="leftTop">
+              <div>#{issue.number}</div>
+              <div>{issue.title}</div>
+            </div>
+            <div className="leftBottom">
+              <div>작성자: {issue.user.name},</div>
+              <div>작성일: {issue.created_at}</div>
+            </div>
           </div>
-          <div className="leftBottom">
-            <div>작성자: {issue.user.name},</div>
-            <div>작성일: {issue.created_at}</div>
+          <div className="right">
+            <div>코멘트: {issue.comments}</div>
           </div>
-        </div>
-        <div className="right">
-          <div>코멘트: {issue.comments}</div>
-        </div>
-      </Link>
-    </S.IssueItem>
+        </Link>
+        <hr />
+      </S.IssueItem>
+      {index === 4 ? (
+        <S.Banner
+          href="https://www.wanted.co.kr/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fuserweb%2Flogo_wanted_black.png&w=110&q=100"
+            alt="wanted_logo"
+          />
+        </S.Banner>
+      ) : null}
+    </>
   );
 }
 
 const S = {
+  Banner: styled.a`
+    & {
+      border-style: solid;
+      border-width: 0.1rem;
+      border-color: black;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    & img {
+      width: 100%;
+      height: 3rem;
+      object-fit: contain;
+    }
+  `,
   IssueItem: styled.li`
     & {
       all: unset;
       width: 100%;
       font-size: 1rem;
+    }
+
+    & hr {
+      width: 100%;
       border-style: solid;
       border-width: 0px;
       border-bottom-width: 0.1rem;

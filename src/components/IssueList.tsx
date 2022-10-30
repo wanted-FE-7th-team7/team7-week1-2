@@ -10,8 +10,8 @@ export function IssueList() {
 
   return (
     <S.IssueList>
-      {issues.map((issue: Issue) => (
-        <IssueItem issue={issue} key={issue.id} />
+      {issues.map((issue: Issue, index) => (
+        <IssueItem issue={issue} key={issue.id} index={index} />
       ))}
     </S.IssueList>
   );

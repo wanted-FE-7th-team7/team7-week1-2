@@ -30,7 +30,7 @@ export function _IssueItem({ issue, index }: Props) {
         </Link>
         <hr />
       </S.IssueItem>
-      {index === 4 ? (
+      {index === 4 && (
         <S.Banner
           href="https://www.wanted.co.kr/"
           target="_blank"
@@ -41,7 +41,7 @@ export function _IssueItem({ issue, index }: Props) {
             alt="wanted_logo"
           />
         </S.Banner>
-      ) : null}
+      )}
     </>
   );
 }

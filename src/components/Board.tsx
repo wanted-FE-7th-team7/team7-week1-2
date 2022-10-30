@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import BoardItem from './BoardItem';
 import { getBoard } from '../apis/apiBoard';
+import IsLoading from './IsLoading';
 
 function Board() {
   const [issues, setIssues] = useState<any[]>([]);
@@ -8,6 +9,12 @@ function Board() {
   useEffect(() => {
     getBoard(setIssues);
   }, []);
+
+  const isLoading = !issues;
+
+  if (isLoading) {
+    return <IsLoading />;
+  }
 
   return (
     <div>

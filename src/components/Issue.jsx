@@ -2,14 +2,20 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { getIssue } from '../apis/apiIssue';
+import IsLoading from './IsLoading';
 
 function Issue() {
   const { number } = useParams();
   const [issueItem, setIssueItem] = useState({});
-
   useEffect(() => {
     getIssue(setIssueItem, number);
   }, []);
+
+  const isLoading = !issueItem;
+
+  if (isLoading) {
+    return <IsLoading />;
+  }
 
   return (
     <SDetailLayout>

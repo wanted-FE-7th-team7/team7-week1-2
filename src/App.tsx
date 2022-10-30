@@ -1,7 +1,19 @@
 import React from 'react';
+import Header from './components/Header';
+import BoardPage from './pages/BoardPage';
+import IssuePage from './pages/IssuePage';
+import { Route, Routes } from 'react-router';
 
-function App() {
-  return <div className="App">여기에 앱을 작성해주세요.</div>;
+function App(): JSX.Element {
+  return (
+    <div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<BoardPage />} />
+        <Route path="/issues/:number" element={<IssuePage />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;

@@ -34,8 +34,7 @@ const S = {
   `,
   Header: styled.div`
     width: 100%;
-    height: 8rem;
-    background-color: blue;
+    height: 10rem;
     display: flex;
     justify-content: center;
   `,

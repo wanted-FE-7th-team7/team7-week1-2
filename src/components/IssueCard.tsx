@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface Props {
-  id: number;
+  number: number;
   title: string;
   author: string;
   createdAt: string;
@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function IssueCard({
-  id,
+  number,
   title,
   author,
   createdAt,
@@ -19,7 +19,7 @@ export default function IssueCard({
     <S.Wrapper>
       <S.IssueInfos>
         <S.IssueTitle>
-          #{id} {title}
+          #{number} {title}
         </S.IssueTitle>
         <S.IssueInfo>
           작성자 : {author} 작성일 : {createdAt}

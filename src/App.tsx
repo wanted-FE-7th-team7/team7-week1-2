@@ -4,19 +4,22 @@ import IssueListPage from './pages/IssueListPages';
 import IssueDetailPage from './pages/IssueDetailPage';
 import Layout from './layout/Layout';
 import GlobalStyle from './style/GlobalStyle';
+import { IssuesProvider } from './contexts/IssuesContext';
 
 function App() {
   return (
     <div className="App">
       <GlobalStyle />
-      <Layout>
-        <BrowserRouter>
-          <Routes>
-            <Route element={<IssueListPage />} path="/" />
-            <Route element={<IssueDetailPage />} path="/:issueId" />
-          </Routes>
-        </BrowserRouter>
-      </Layout>
+      <IssuesProvider>
+        <Layout>
+          <BrowserRouter>
+            <Routes>
+              <Route element={<IssueListPage />} path="/" />
+              <Route element={<IssueDetailPage />} path="/:issueId" />
+            </Routes>
+          </BrowserRouter>
+        </Layout>
+      </IssuesProvider>
     </div>
   );
 }

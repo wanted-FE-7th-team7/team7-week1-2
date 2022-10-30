@@ -1,14 +1,14 @@
 // @flow
 import * as React from 'react';
-import { issuesContext } from '../contexts/issuesContext';
+import { useLoadIssues } from '../hooks/useLoadIssues';
 
 export function NextIssueLoader() {
-  const [, loadNextIssues] = React.useContext(issuesContext);
+  const loadIssues = useLoadIssues();
 
   return (
     <button
       onClick={async () => {
-        await loadNextIssues();
+        await loadIssues();
       }}
     >
       불러오기

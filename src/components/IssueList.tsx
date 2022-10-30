@@ -1,11 +1,11 @@
 // @flow
 import * as React from 'react';
-import { issuesContext } from '../contexts/issuesContext';
+import { useIssues } from '../hooks/useIssues';
 import { Issue } from '../models/issue';
 import { IssueItem } from './IssueItem';
 
 export function IssueList() {
-  const [issues] = React.useContext(issuesContext);
+  const issues = useIssues();
 
   return (
     <ul>

@@ -3,6 +3,7 @@ import { useCallback, useState } from 'react';
 import { Issue } from '../models/issue';
 import { issuesLoader } from '../utils/issuesLoader';
 import { issuesContext as IssuesContext } from './issuesContext';
+import { loadIssuesContext as LoadIssuesContext } from './loadIssuesContext';
 
 interface Props {
   children: React.ReactElement;
@@ -11,14 +12,16 @@ interface Props {
 function IssuesProvider({ children }: Props) {
   const [issues, setIssues] = useState<Issue[]>([]);
 
-  const loadNextIssues = useCallback(async () => {
+  const loadIssues = useCallback(async () => {
     const data = await issuesLoader.getNextIssuesAsync();
     setIssues(prevData => [...prevData, ...data]);
   }, []);
 
   return (
-    <IssuesContext.Provider value={[issues, loadNextIssues]}>
-      {children}
+    <IssuesContext.Provider value={issues}>
+      <LoadIssuesContext.Provider value={loadIssues}>
+        {children}
+      </LoadIssuesContext.Provider>
     </IssuesContext.Provider>
   );
 }

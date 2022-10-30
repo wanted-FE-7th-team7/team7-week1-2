@@ -1,12 +1,9 @@
 // @flow
-import * as React from 'react';
-import { useContext } from 'react';
 import { useParams } from 'react-router';
-import { issuesContext } from '../contexts/issuesContext';
+import { useIssues } from '../hooks/useIssues';
 type Props = {};
 export function IssueDetailPage(props: Props) {
-  const [issues] = useContext(issuesContext);
-
+  const issues = useIssues();
   const params = useParams();
 
   const [issue] = issues.filter(

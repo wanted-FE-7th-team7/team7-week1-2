@@ -4,20 +4,14 @@ import styled from 'styled-components';
 function Header() {
   return (
     <SHeaderLayout>
-      <div>angular / angular-cli</div>
+      <h2>Angular / Angular-cli</h2>
     </SHeaderLayout>
   );
 }
 
 const SHeaderLayout = styled.div`
   display: flex;
-  align-self: center;
-  align-items: center;
   justify-content: center;
-
-  position: sticky;
-
-  top: 0;
 
   div {
     background-color: gray;

@@ -34,6 +34,7 @@ const S = {
   IssueItem: styled.li`
     & {
       all: unset;
+      width: 100%;
       font-size: 1rem;
       border-style: solid;
       border-width: 0px;

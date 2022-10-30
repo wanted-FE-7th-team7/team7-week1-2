@@ -1,14 +1,16 @@
 import styled from 'styled-components';
+import { REPO, OWNER } from '../constants';
 interface Props {
-  header: string;
   children: JSX.Element;
 }
 
-export default function Layout({ header, children }: Props) {
+export default function Layout({ children }: Props) {
   return (
     <S.Wrapper>
       <S.Layout>
-        <S.Header>{header}</S.Header>
+        <S.Header>
+          {OWNER} / {REPO}
+        </S.Header>
         {children}
       </S.Layout>
     </S.Wrapper>
@@ -32,10 +34,9 @@ const S = {
   `,
   Header: styled.div`
     width: 100%;
-    height: 5rem;
+    height: 8rem;
     background-color: blue;
     display: flex;
     justify-content: center;
-    align-items: center;
   `,
 };

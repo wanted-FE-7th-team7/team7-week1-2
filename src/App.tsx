@@ -1,16 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { IssuesService } from './apis/IssuesService';
+import { IssueContextInterface } from './contexts/IssueContext';
 import { Issue } from './interfaces/Issue';
 import Layout from './Layouts/Layout';
 import DetailPage from './pages/DetailPage';
 import IssuesPage from './pages/IssuesPage';
-
-export interface IssueContextInterface {
-  issueList: Issue[];
-  isLoading: boolean;
-  errors: boolean;
-}
 
 export const IssueContext = React.createContext<IssueContextInterface | null>(
   null

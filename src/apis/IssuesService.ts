@@ -3,7 +3,8 @@ import { http, URLS } from './api';
 export const IssuesService = {
   getIssues: async function (page = 1) {
     try {
-      const query = `?sort=comments&per_page=10&page=${page}`;
+      const per_page = 10;
+      const query = `?sort=comments&per_page=${per_page}&page=${page}`;
       const url = `${URLS.ISSUES.ANGULAR_CLI}${query}`;
       const res = await http.get(url);
       if (res.status === 200) return res.data;

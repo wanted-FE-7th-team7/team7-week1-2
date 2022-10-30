@@ -34,6 +34,7 @@ class IssuesLoader {
 
   private parseIssue(issueResponse: IssueResponse): Issue {
     return {
+      id: issueResponse.id,
       number: issueResponse.number,
       title: issueResponse.title,
       body: issueResponse.body,

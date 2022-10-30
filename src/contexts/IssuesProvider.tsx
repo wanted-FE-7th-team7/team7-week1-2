@@ -17,7 +17,7 @@ function IssuesProvider({ children }: Props) {
   }, []);
 
   return (
-    <IssuesContext.Provider value={{ issues, loadNextIssues }}>
+    <IssuesContext.Provider value={[issues, loadNextIssues]}>
       {children}
     </IssuesContext.Provider>
   );

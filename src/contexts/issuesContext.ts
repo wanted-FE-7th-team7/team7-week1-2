@@ -1,7 +1,8 @@
 import { createContext } from 'react';
 import { Issue } from '../models/issue';
 
-export const issuesContext = createContext<{
-  issues: Issue[];
-  loadNextIssues: () => Promise<void>;
-}>({ issues: [], loadNextIssues: async () => {} });
+export type IssueContextValue = [Issue[], () => Promise<void>];
+export const issuesContext = createContext<IssueContextValue>([
+  [],
+  async () => {},
+]);

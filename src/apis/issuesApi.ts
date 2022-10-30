@@ -3,6 +3,7 @@ import { env } from '../utils/env';
 import { createAxiosInstance, createJwtAuthorization } from './axiosUtils';
 
 export interface IssueResponse {
+  id: number;
   number: number;
   title: string;
   body: string;

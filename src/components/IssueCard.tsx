@@ -35,7 +35,7 @@ const S = {
     width: 100%;
     height: 5rem;
     display: flex;
-    background-color: yellow;
+    background-color: #ffffff;
     justify-content: space-between;
   `,
   IssueInfos: styled.div`

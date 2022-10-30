@@ -55,7 +55,8 @@ export const IssuesDispatchContext = createContext<React.Dispatch<any>>(
 interface Props {
   children: React.ReactElement;
 }
-export function TestIssuesProvider({ children }: Props) {
+
+export function IssuesProvider({ children }: Props) {
   const [state, dispatch] = useReducer(issuesReducer, initialState);
   return (
     <IssuesStateContext.Provider value={state}>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { TestIssuesProvider } from '../contexts/IssuesContext';
+import { IssuesProvider } from '../contexts/IssuesContext';
 
 type Props = {
   children: React.ReactElement;
@@ -9,7 +9,7 @@ type Props = {
 export function Providers({ children }: Props) {
   return (
     <Router>
-      <TestIssuesProvider>{children}</TestIssuesProvider>
+      <IssuesProvider>{children}</IssuesProvider>
     </Router>
   );
 }

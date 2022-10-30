@@ -8,7 +8,7 @@ export function IssueRouter() {
   return (
     <Routes>
       <Route path="/" element={<IssuesPage />} />
-      <Route path="/:number" element={<IssueDetailPage />} />
+      <Route path="/:id" element={<IssueDetailPage />} />
     </Routes>
   );
 }

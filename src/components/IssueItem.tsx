@@ -10,7 +10,7 @@ interface Props {
 export function _IssueItem({ issue }: Props) {
   return (
     <li>
-      <Link to={`/${issue.number}`}>
+      <Link to={`/${issue.id}`}>
         <div>{issue.title}</div>
       </Link>
     </li>

@@ -6,9 +6,7 @@ export function IssueDetailPage(props: Props) {
   const issues = useIssues();
   const params = useParams();
 
-  const [issue] = issues.filter(
-    issue => issue.number === Number(params?.number)
-  );
+  const [issue] = issues.filter(issue => issue.id === Number(params?.id));
 
   return <div>{issue.body}</div>;
 }

@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-export type loadIssuesContextValue = () => Promise<void>;
+export type loadIssuesContextValue = () => Promise<boolean>;
 export const loadIssuesContext = createContext<loadIssuesContextValue>(
-  async () => {}
+  async () => Promise.resolve(false)
 );

@@ -11,6 +11,7 @@ class IssuesLoader {
   private perPage: number;
   private sort: IssuesSort;
   private issuesApi: IssuesApi;
+  private isEnd: boolean;
 
   constructor(
     issuesApi: IssuesApi,
@@ -21,15 +22,22 @@ class IssuesLoader {
     this.perPage = perPage;
     this.sort = sort;
     this.issuesApi = issuesApi;
+    this.isEnd = false;
   }
 
   async getNextIssuesAsync() {
+    if (this.isEnd === true) return { isEnd: this.isEnd, newIssues: [] };
+
     const { data } = await this.issuesApi.getIssues(
       this.sort,
       ++this.page,
       this.perPage
     );
-    return data.map(this.parseIssue);
+
+    if (data.length < this.perPage) {
+      this.isEnd = true;
+    }
+    return { isEnd: this.isEnd, newIssues: data.map(this.parseIssue) };
   }
 
   private parseIssue(issueResponse: IssueResponse): Issue {

@@ -13,8 +13,9 @@ function IssuesProvider({ children }: Props) {
   const [issues, setIssues] = useState<Issue[]>([]);
 
   const loadIssues = useCallback(async () => {
-    const data = await issuesLoader.getNextIssuesAsync();
-    setIssues(prevData => [...prevData, ...data]);
+    const { isEnd, newIssues } = await issuesLoader.getNextIssuesAsync();
+    setIssues(prevIssues => [...prevIssues, ...newIssues]);
+    return isEnd;
   }, []);
 
   return (

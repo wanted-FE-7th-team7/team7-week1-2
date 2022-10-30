@@ -25,6 +25,11 @@ function IssuesPage({
           issueList.map((issue, idx) => {
             return (
               <li key={issue.number} style={{ listStyle: 'none' }}>
+                {idx === 4 && (
+                  <a href={AD.LINK_URL}>
+                    <StyledAdBanner src={AD.IMG_URL} />
+                  </a>
+                )}
                 <IssueItem issue={issue} />
               </li>
             );

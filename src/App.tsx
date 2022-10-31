@@ -30,9 +30,9 @@ function App() {
   }, [page, handleFetch]);
 
   return (
-    <IssueContext.Provider value={{ issueList, isLoading, errors }}>
-      <BrowserRouter>
-        <Routes>
+    <BrowserRouter>
+      <Routes>
+        <IssueContext.Provider value={{ issueList, isLoading, errors }}>
           <Route
             path="/"
             element={
@@ -49,9 +49,9 @@ function App() {
               </Layout>
             }
           />
-        </Routes>
-      </BrowserRouter>
-    </IssueContext.Provider>
+        </IssueContext.Provider>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

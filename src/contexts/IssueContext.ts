@@ -7,4 +7,11 @@ export interface IssueContextInterface {
   errors: boolean;
 }
 
-export const IssueContext = createContext<IssueContextInterface | null>(null);
+const initIssueContext = {
+  issueList: [],
+  isLoading: false,
+  errors: false,
+};
+
+export const IssueContext =
+  createContext<IssueContextInterface>(initIssueContext);

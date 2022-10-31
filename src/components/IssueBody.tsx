@@ -2,7 +2,11 @@ import ReactMarkdown from 'react-markdown';
 import styled from 'styled-components';
 import { Issue } from '../interfaces/Issue';
 
-function IssueBody({ issue }: { issue: Issue }) {
+interface Props {
+  issue: Issue;
+}
+
+function IssueBody({ issue }: Props) {
   return (
     <StyledItem>
       <ReactMarkdown children={issue.body} />

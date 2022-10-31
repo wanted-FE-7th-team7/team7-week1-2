@@ -6,12 +6,12 @@ import AdBanner from '../components/AdBanner';
 import Error from '../components/Error';
 import Loading from '../components/Loading';
 
-function IssuesPage({
-  setPage,
-}: {
+interface Props {
   setPage: Dispatch<SetStateAction<number>>;
-}) {
-  const { issueList, isLoading, errors } = useContext(IssueContext)!;
+}
+
+function IssuesPage({ setPage }: Props) {
+  const { issueList, isLoading, errors } = useContext(IssueContext);
   const setObserveTarget = useIntersectionObserver(setPage);
 
   if (errors) {

@@ -3,7 +3,11 @@ import { useLocation, useNavigate } from 'react-router';
 import styled from 'styled-components';
 import { Issue } from '../interfaces/Issue';
 
-function IssueItem({ issue }: { issue: Issue }) {
+interface Props {
+  issue: Issue;
+}
+
+function IssueItem({ issue }: Props) {
   const { number, title, user, created_at, comments } = issue;
   const navigate = useNavigate();
   const { pathname } = useLocation();

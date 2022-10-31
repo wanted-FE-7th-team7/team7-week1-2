@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import styled from 'styled-components';
 import { Issue } from '../interfaces/Issue';
@@ -35,7 +35,7 @@ function IssueItem({ issue }: Props) {
   );
 }
 
-export default IssueItem;
+export default memo(IssueItem);
 
 export const StyledItem = styled.div`
   width: 100%;

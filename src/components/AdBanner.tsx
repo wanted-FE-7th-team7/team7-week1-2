@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import styled from 'styled-components';
 import { AD } from '../utils/variable';
 
@@ -9,7 +10,7 @@ function AdBanner() {
   );
 }
 
-export default AdBanner;
+export default memo(AdBanner);
 
 const StyledAdBanner = styled.img`
   width: 100%;
